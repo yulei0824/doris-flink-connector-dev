@@ -95,6 +95,11 @@ public class JsonDebeziumSchemaChangeImplV2 extends JsonDebeziumSchemaChange {
                 changeContext.getTargetTableSuffix() == null
                         ? ""
                         : changeContext.getTargetTableSuffix();
+
+        LOG.info(
+                "targetTablePrefix: {}, targetTableSuffix: {}.",
+                targetTablePrefix,
+                targetTableSuffix);
     }
 
     @Override
@@ -229,6 +234,9 @@ public class JsonDebeziumSchemaChangeImplV2 extends JsonDebeziumSchemaChange {
         }
 
         String dorisTable = getCreateTableIdentifier(record);
+
+        LOG.info("Doris table name is {}.", dorisTable);
+
         JsonNode tableChange = extractTableChange(record);
         JsonNode pkColumns = tableChange.get("table").get("primaryKeyColumnNames");
         JsonNode columns = tableChange.get("table").get("columns");

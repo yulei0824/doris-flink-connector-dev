@@ -99,6 +99,8 @@ public abstract class DatabaseSync {
     }
 
     public void create() {
+        LOG.info("tablePrefix: {}, tableSuffix: {}.", tablePrefix, tableSuffix);
+
         this.includingPattern = includingTables == null ? null : Pattern.compile(includingTables);
         this.excludingPattern = excludingTables == null ? null : Pattern.compile(excludingTables);
         this.multiToOneRulesPattern = multiToOneRulesParser(multiToOneOrigin, multiToOneTarget);

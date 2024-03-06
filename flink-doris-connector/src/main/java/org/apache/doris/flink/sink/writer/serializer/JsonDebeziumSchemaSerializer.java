@@ -259,6 +259,11 @@ public class JsonDebeziumSchemaSerializer implements DorisRecordSerializer<Strin
         }
 
         public JsonDebeziumSchemaSerializer build() {
+            LOG.info(
+                    "targetTablePrefix: {}, targetTableSuffix: {}.",
+                    targetTablePrefix,
+                    targetTableSuffix);
+
             return new JsonDebeziumSchemaSerializer(
                     dorisOptions,
                     addDropDDLPattern,
